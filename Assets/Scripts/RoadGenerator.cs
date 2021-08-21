@@ -8,27 +8,25 @@ public class RoadGenerator : MonoBehaviour
     public GameObject roadPiece;
     GameObject[] generatedRoadPieces;
 
-    float zHalfExtents;
-    float zCenter;
-    float zFront;
+    float zFullExtent;
 
-    int frontRoadPiece;
+    int frontRoadPiece = 0;
     int lastRoadPiece;
 
     public int numOfRoadPieces;
+
+    Vector3 movementStep;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        frontRoadPiece = 0;
+        movementStep = new Vector3(0, 0, -10) * Time.deltaTime * 5f;
         lastRoadPiece = numOfRoadPieces - 1;
         generatedRoadPieces = new GameObject[numOfRoadPieces];
         generatedRoadPieces[0] = Instantiate(roadPiece, new Vector3(0, 0, 0), transform.rotation);
         roadBoxCollider = generatedRoadPieces[0].GetComponent<BoxCollider>();
-        zHalfExtents = roadBoxCollider.bounds.extents.z;
-        zCenter = roadBoxCollider.bounds.center.z;
-        zFront = transform.position.z + (zCenter + zHalfExtents);
+        zFullExtent = roadBoxCollider.bounds.extents.z * 2;
         buildRoads(numOfRoadPieces);
     }
 
@@ -45,23 +43,20 @@ public class RoadGenerator : MonoBehaviour
 
     void buildRoads(int numOfRoads)
     {
+        float newZCenter = roadBoxCollider.center.z + zFullExtent;
         for (int i = 1; i < numOfRoads; i++)
         {
-            float newZCenter = zFront + zHalfExtents;
             generatedRoadPieces[i] = Instantiate(roadPiece, new Vector3(0, 0, newZCenter), transform.rotation);
-            zFront = newZCenter + zHalfExtents;
+            newZCenter += zFullExtent;
         }
     }
 
     void recycleRoads()
     {
-        float zFullExtents = zHalfExtents * 2;
-        var lastRoadPiecePosition = generatedRoadPieces[lastRoadPiece].transform.position.z;
-        var newLastRoadPiecePosition = lastRoadPiecePosition + zFullExtents;
-        var endPosition = new Vector3(0, 0, newLastRoadPiecePosition);
+        var endPosition = new Vector3(0, 0, generatedRoadPieces[lastRoadPiece].transform.position.z + zFullExtent);
         Rigidbody frontRoadRigidBody = generatedRoadPieces[frontRoadPiece].GetComponent<Rigidbody>();
         frontRoadRigidBody.transform.position = endPosition;
-        frontRoadRigidBody.transform.position += new Vector3(0, 0, -10) * Time.deltaTime * 5f;
+        frontRoadRigidBody.transform.position += movementStep;
         if (frontRoadPiece == numOfRoadPieces - 1)
         {
             lastRoadPiece = numOfRoadPieces - 1;
@@ -78,7 +73,7 @@ public class RoadGenerator : MonoBehaviour
     {
         foreach (GameObject roadPiece in generatedRoadPieces)
         {
-            roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + new Vector3(0, 0, -10) * Time.deltaTime * 5f);
+            roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + movementStep);
         }
     }
 }
