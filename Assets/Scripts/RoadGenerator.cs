@@ -51,10 +51,14 @@ public class RoadGenerator : MonoBehaviour
         }
     }
 
+
+
     void recycleRoads()
     {
         var endPosition = new Vector3(0, 0, generatedRoadPieces[lastRoadPiece].transform.position.z + zFullExtent);
         Rigidbody frontRoadRigidBody = generatedRoadPieces[frontRoadPiece].GetComponent<Rigidbody>();
+        HouseSpawner houseSpawner = generatedRoadPieces[frontRoadPiece].GetComponent<HouseSpawner>();
+        houseSpawner.buildHouses(generatedRoadPieces[frontRoadPiece]);
         frontRoadRigidBody.transform.position = endPosition;
         frontRoadRigidBody.transform.position += movementStep;
         if (frontRoadPiece == numOfRoadPieces - 1)

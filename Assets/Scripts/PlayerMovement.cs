@@ -21,11 +21,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey("a") && playerRigidBody.velocity.x >= maxVelocity * -1)
         {
-            playerRigidBody.AddForce(-1, 0, 0, ForceMode.Force);
+            playerRigidBody.AddForce(-2, 0, 0, ForceMode.Force);
         }
         if (Input.GetKey("d") && playerRigidBody.velocity.x <= maxVelocity)
         {
-            playerRigidBody.AddForce(1, 0, 0, ForceMode.Force);
+            playerRigidBody.AddForce(2, 0, 0, ForceMode.Force);
         }
     }
 }
