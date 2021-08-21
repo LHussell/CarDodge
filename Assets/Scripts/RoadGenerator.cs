@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class RoadGenerator : MonoBehaviour
@@ -34,32 +33,35 @@ public class RoadGenerator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if(generatedRoadPieces[frontRoadPiece].transform.position.z <= -40)
+        
+        if (generatedRoadPieces[frontRoadPiece].transform.position.z <= -40)
         {
             recycleRoads();
         }
+        moveRoads();
     }
 
     void buildRoads(int numOfRoads)
     {
-        for(int i = 1; i < numOfRoads; i++)
+        for (int i = 1; i < numOfRoads; i++)
         {
             float newZCenter = zFront + zHalfExtents;
             generatedRoadPieces[i] = Instantiate(roadPiece, new Vector3(0, 0, newZCenter), transform.rotation);
             zFront = newZCenter + zHalfExtents;
-        }
-        foreach(GameObject roadPiece in generatedRoadPieces)
-        {
-            roadPiece.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -10);
         }
     }
 
     void recycleRoads()
     {
         float zFullExtents = zHalfExtents * 2;
-        generatedRoadPieces[frontRoadPiece].transform.position = new Vector3(0, 0, generatedRoadPieces[lastRoadPiece].transform.position.z + zFullExtents);
+        var lastRoadPiecePosition = generatedRoadPieces[lastRoadPiece].transform.position.z;
+        var newLastRoadPiecePosition = lastRoadPiecePosition + zFullExtents;
+        var endPosition = new Vector3(0, 0, newLastRoadPiecePosition);
+        Rigidbody frontRoadRigidBody = generatedRoadPieces[frontRoadPiece].GetComponent<Rigidbody>();
+        frontRoadRigidBody.transform.position = endPosition;
+        frontRoadRigidBody.transform.position += new Vector3(0, 0, -10) * Time.deltaTime * 5f;
         if (frontRoadPiece == numOfRoadPieces - 1)
         {
             lastRoadPiece = numOfRoadPieces - 1;
@@ -69,6 +71,14 @@ public class RoadGenerator : MonoBehaviour
         {
             lastRoadPiece = frontRoadPiece;
             frontRoadPiece++;
+        }
+    }
+
+    void moveRoads()
+    {
+        foreach (GameObject roadPiece in generatedRoadPieces)
+        {
+            roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + new Vector3(0, 0, -10) * Time.deltaTime * 5f);
         }
     }
 }
