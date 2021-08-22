@@ -5,6 +5,8 @@ public class RoadGenerator : MonoBehaviour
 {
     BoxCollider roadBoxCollider;
 
+    public float roadSpeed;
+
     public GameObject roadPiece;
     GameObject[] generatedRoadPieces;
 
@@ -21,7 +23,7 @@ public class RoadGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movementStep = new Vector3(0, 0, -10) * Time.deltaTime * 5f;
+        movementStep = new Vector3(0, 0, -10) * Time.deltaTime * roadSpeed;
         lastRoadPiece = numOfRoadPieces - 1;
         generatedRoadPieces = new GameObject[numOfRoadPieces];
         generatedRoadPieces[0] = Instantiate(roadPiece, new Vector3(0, 0, 0), transform.rotation);
@@ -75,6 +77,9 @@ public class RoadGenerator : MonoBehaviour
 
     void moveRoads()
     {
+
+        Debug.Log("MovingRoads");
+
         foreach (GameObject roadPiece in generatedRoadPieces)
         {
             roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + movementStep);
