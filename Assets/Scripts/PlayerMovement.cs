@@ -30,10 +30,6 @@ public class PlayerMovement : MonoBehaviour
         {
             direction = CarDirectionPressed.Right;
         }
-        else if (direction != CarDirectionPressed.None)
-        {
-            direction = CarDirectionPressed.None;
-        }
     }
 
     private void FixedUpdate()

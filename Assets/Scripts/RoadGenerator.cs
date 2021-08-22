@@ -77,9 +77,6 @@ public class RoadGenerator : MonoBehaviour
 
     void moveRoads()
     {
-
-        Debug.Log("MovingRoads");
-
         foreach (GameObject roadPiece in generatedRoadPieces)
         {
             roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + movementStep);
