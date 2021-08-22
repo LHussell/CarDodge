@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
 
     Rigidbody playerRigidBody;
-    BoxCollider playerBoxCollider;
 
     CarDirectionPressed direction;
 
@@ -29,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey("d") && playerRigidBody.velocity.x <= maxVelocity && direction != CarDirectionPressed.Right)
         {
             direction = CarDirectionPressed.Right;
+        }
+        else if (direction != CarDirectionPressed.None)
+        {
+            direction = CarDirectionPressed.None;
         }
     }
 

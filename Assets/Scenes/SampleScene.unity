@@ -166,9 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffcd4df7844af0f4e85e3b34ab8fc81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roadSpeed: 3
+  roadSpeed: 2
   roadPiece: {fileID: 4214706012711595019, guid: 082db9c71217a5547829eee6eaaed192, type: 3}
-  numOfRoadPieces: 10
+  numOfRoadPieces: 6
 --- !u!4 &466339928 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7182408354977569212, guid: fa5f0e3928c7e4865827621522a0dfef, type: 3}

@@ -23,7 +23,7 @@ public class RoadGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movementStep = new Vector3(0, 0, -10) * Time.deltaTime * roadSpeed;
+        movementStep = new Vector3(0, 0, -10) * roadSpeed;
         lastRoadPiece = numOfRoadPieces - 1;
         generatedRoadPieces = new GameObject[numOfRoadPieces];
         generatedRoadPieces[0] = Instantiate(roadPiece, new Vector3(0, 0, 0), transform.rotation);
@@ -62,7 +62,7 @@ public class RoadGenerator : MonoBehaviour
         HouseSpawner houseSpawner = generatedRoadPieces[frontRoadPiece].GetComponent<HouseSpawner>();
         houseSpawner.buildHouses(generatedRoadPieces[frontRoadPiece]);
         frontRoadRigidBody.transform.position = endPosition;
-        frontRoadRigidBody.transform.position += movementStep;
+        frontRoadRigidBody.transform.position += movementStep * Time.deltaTime;
         if (frontRoadPiece == numOfRoadPieces - 1)
         {
             lastRoadPiece = numOfRoadPieces - 1;
@@ -79,7 +79,7 @@ public class RoadGenerator : MonoBehaviour
     {
         foreach (GameObject roadPiece in generatedRoadPieces)
         {
-            roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + movementStep);
+            roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + movementStep * Time.deltaTime);
         }
     }
 }
