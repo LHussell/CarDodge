@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEditor;
 
 public class RoadGenerator : MonoBehaviour
 {
@@ -24,7 +23,6 @@ public class RoadGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        RoadPostprocessor.Execute();
         movementStep = new Vector3(0, 0, -10) * roadSpeed;
         lastRoadPiece = numOfRoadPieces - 1;
         generatedRoadPieces = new GameObject[numOfRoadPieces];
@@ -83,15 +81,5 @@ public class RoadGenerator : MonoBehaviour
         {
             roadPiece.GetComponent<Rigidbody>().MovePosition(roadPiece.transform.position + movementStep * Time.deltaTime);
         }
-    }
-}
-
-
-public class RoadPostprocessor : AssetPostprocessor
-{
-    public static void Execute()
-    {
-        TextureImporter roadTextureImporter = (TextureImporter)TextureImporter.GetAtPath("Assets/ModularRoads_v1.02/Materials/UVs/Straight_4-lane/Straight_4-lane_UV-01.png");
-        roadTextureImporter.mipMapBias = -0.4f;
     }
 }
