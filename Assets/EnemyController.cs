@@ -16,19 +16,19 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position.x > 13)
+        if (transform.position.x > 15)
         {
-            enemyRigidBody.MovePosition(transform.position + new Vector3(-1, 0, -1) * Time.deltaTime);
+            enemyRigidBody.MovePosition(transform.position + (new Vector3(-0.2f, 0, -1) * 30) * Time.deltaTime);
             enemyAnimator.SetBool("Running", true);
         }
-        else if (transform.position.x < -13)
+        else if (transform.position.x < -15)
         {
-            enemyRigidBody.MovePosition(transform.position + new Vector3(1, 0, -1) * Time.deltaTime);
+            enemyRigidBody.MovePosition(transform.position + (new Vector3(0.2f, 0, -1) * 30) * Time.deltaTime);
             enemyAnimator.SetBool("Running", true);
         }
         else
         {
-            enemyRigidBody.MovePosition(transform.position + new Vector3(0, 0, -1) * Time.deltaTime);
+            enemyRigidBody.MovePosition(transform.position + (new Vector3(0, 0, -1) * 30) * Time.deltaTime);
             enemyAnimator.SetBool("Running", true);
         }
     }

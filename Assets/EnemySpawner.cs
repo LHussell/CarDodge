@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (enemyPrefab != null)
         {
-            Instantiate(enemyPrefab, houseLocation.transform.position + new Vector3(0, 0, 10), transform.rotation);
+            Instantiate(enemyPrefab, houseLocation.transform.position + new Vector3(0, 0, 20), transform.rotation * Quaternion.Euler(0f, 180f, 0f));
         }
     }
 }
