@@ -374,29 +374,12 @@ namespace BNG {
                 input.VibrateController(0.1f, 0.2f, 0.1f, thisGrabber.HandSide);
             }
 
-            // Use projectile if Time has been slowed
-            bool useProjectile = AlwaysFireProjectile || (FireProjectileInSlowMo && Time.timeScale < 1);
-            if (useProjectile) {
-                GameObject projectile = Instantiate(ProjectilePrefab, MuzzlePointTransform.position, MuzzlePointTransform.rotation) as GameObject;
-                Rigidbody projectileRigid = projectile.GetComponentInChildren<Rigidbody>();
-                projectileRigid.AddForce(MuzzlePointTransform.forward * ShotForce, ForceMode.VelocityChange);
-                
-                Projectile proj = projectile.GetComponent<Projectile>();
-                // Convert back to raycast if Time reverts
-                if (proj && !AlwaysFireProjectile) {
-                    proj.MarkAsRaycastBullet();
-                }
+            GameObject projectile = Instantiate(ProjectilePrefab, MuzzlePointTransform.position, MuzzlePointTransform.rotation) as GameObject;
+            Rigidbody projectileRigid = projectile.GetComponentInChildren<Rigidbody>();
+            projectileRigid.AddForce(MuzzlePointTransform.forward * ShotForce, ForceMode.Force);
 
                 // Make sure we clean up this projectile
-                Destroy(projectile, 20);
-            }
-            else {
-                // Raycast to hit
-                RaycastHit hit;
-                if (Physics.Raycast(MuzzlePointTransform.position, MuzzlePointTransform.forward, out hit, MaxRange, ValidLayers, QueryTriggerInteraction.Ignore)) {
-                    OnRaycastHit(hit);
-                }
-            }
+            Destroy(projectile, 20);
 
             // Apply recoil
             ApplyRecoil();            

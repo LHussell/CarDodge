@@ -14,6 +14,6 @@ public class HouseSpawner : MonoBehaviour
         house = Instantiate(Resources.Load("House_" + random.Next(1, 5)) as GameObject, houseLocation.transform.position, transform.rotation);
         house.transform.parent = houseLocation.transform;
         EnemySpawner enemySpawner = gameObject.GetComponent<EnemySpawner>();
-        enemySpawner.spawnEnemyAt(houseLocation);
+        enemySpawner.SpawnEnemyAt(houseLocation);
     }
 }

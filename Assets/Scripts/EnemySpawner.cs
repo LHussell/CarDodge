@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject enemyPrefab;
     
-    public void spawnEnemyAt(GameObject houseLocation)
+    public void SpawnEnemyAt(GameObject houseLocation)
     {
         if (enemyPrefab != null)
         {

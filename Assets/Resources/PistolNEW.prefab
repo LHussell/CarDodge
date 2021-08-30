@@ -3023,7 +3023,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024261394930030412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0338, z: 0.1473}
+  m_LocalPosition: {x: 0, y: 0.0338, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6024261396410624979}
@@ -3640,7 +3640,7 @@ MonoBehaviour:
   FiringMethod: 0
   ReloadMethod: 0
   FiringRate: 0.05
-  BulletImpactForce: 1000
+  BulletImpactForce: 1300
   InternalAmmo: 0
   MaxInternalAmmo: 10
   AutoChamberRounds: 1
@@ -3648,7 +3648,7 @@ MonoBehaviour:
   AlwaysFireProjectile: 0
   FireProjectileInSlowMo: 1
   SlowMoRateOfFire: 0.3
-  ShotForce: 20
+  ShotForce: 1000
   BulletCasingForce: 3
   RecoilForce: {x: 0, y: 0, z: 0}
   RecoilDuration: 0.3
@@ -4872,6 +4872,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4213795611944346747, guid: 9e3b0bca4dce07c4cac56011bea1487d, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799183511233398105, guid: 9e3b0bca4dce07c4cac56011bea1487d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
