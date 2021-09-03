@@ -11,6 +11,6 @@ public class CameraDistanceClipper : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
-        cam.farClipPlane = 200f;
+        cam.farClipPlane = 400f;
     }
 }
