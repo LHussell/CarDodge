@@ -931,8 +931,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roadSpeed: 15
-  roadPiece: {fileID: 100000, guid: e620443992f9d495babb2d085f4509b5, type: 3}
-  numOfRoadPieces: 10
+  roadPiece: {fileID: 9033060178964960889, guid: 073697bc4f5518d41b94eb148cf134c8, type: 3}
+  numOfRoadPieces: 20
 --- !u!114 &464673450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,8 +1083,8 @@ MonoBehaviour:
   bendRotationAxisType: 0
   bendRotationCenter2: {fileID: 0}
   bendRotationCenter2Position: {x: 0, y: 0, z: 0}
-  bendVerticalSize: -0.5
-  bendVerticalOffset: 120
+  bendVerticalSize: -0.18
+  bendVerticalOffset: 24
   bendHorizontalSize: 0
   bendHorizontalOffset: 0
   bendCurvatureSize: 0
