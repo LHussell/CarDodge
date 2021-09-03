@@ -33,6 +33,11 @@ public class EnemyController : MonoBehaviour
                 enemyRigidBody.MovePosition(transform.position + (new Vector3(0, 0, -1) * 30) * Time.deltaTime);
                 enemyAnimator.SetBool("Running", true);
             }
+
+            if (transform.position.z < -10)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
