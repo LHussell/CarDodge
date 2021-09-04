@@ -15,6 +15,16 @@ public class RoadGenerator : MonoBehaviour
     int frontRoadPiece = 0;
     int lastRoadPiece;
 
+
+    public int maxEnemySpace;
+    public int maxHouseSpace;
+
+
+    int enemySpace = 0;
+    int houseSpace = 0;
+
+
+
     public int numOfRoadPieces;
 
     Vector3 movementStep;
@@ -58,11 +68,24 @@ public class RoadGenerator : MonoBehaviour
     void recycleRoads()
     {
         var endPosition = new Vector3(0, 0, generatedRoadPieces[lastRoadPiece].transform.position.z + zFullExtent);
-        Rigidbody frontRoadRigidBody = generatedRoadPieces[frontRoadPiece].GetComponent<Rigidbody>();
-        HouseSpawner houseSpawner = generatedRoadPieces[frontRoadPiece].GetComponent<HouseSpawner>();
+        var tempFrontRoadPiece = generatedRoadPieces[frontRoadPiece];
+        Rigidbody frontRoadRigidBody = tempFrontRoadPiece.GetComponent<Rigidbody>();
+        HouseSpawner houseSpawner = tempFrontRoadPiece.GetComponent<HouseSpawner>();
+        EnemySpawner enemySpawner = tempFrontRoadPiece.GetComponent<EnemySpawner>();
+        CoinSpawner coinSpawner = tempFrontRoadPiece.GetComponent<CoinSpawner>();
+
         frontRoadRigidBody.transform.position = endPosition;
         frontRoadRigidBody.transform.position += movementStep * Time.deltaTime;
-        houseSpawner.buildHouses(generatedRoadPieces[frontRoadPiece]);
+
+        System.Random rand = new System.Random();
+
+        if (houseSpace == 0) houseSpawner.BuildHouses(tempFrontRoadPiece);
+        if (enemySpace == 0) enemySpawner.SpawnEnemyAt(tempFrontRoadPiece);
+        else if (rand.Next(1, 11) < 3) coinSpawner.BuildCoins(tempFrontRoadPiece);
+
+        if (houseSpace < maxHouseSpace) houseSpace++; else houseSpace = 0;
+        if (enemySpace < maxEnemySpace) enemySpace++; else enemySpace = 0;
+
         if (frontRoadPiece == numOfRoadPieces - 1)
         {
             lastRoadPiece = numOfRoadPieces - 1;

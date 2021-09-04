@@ -11,10 +11,6 @@ GameObject:
   - component: {fileID: 7185773288822689574}
   - component: {fileID: 7185773288825556742}
   - component: {fileID: 7185773288824589766}
-  - component: {fileID: 5214651904203213561}
-  - component: {fileID: 522427944139885977}
-  - component: {fileID: 3193683567133920633}
-  - component: {fileID: 2998050219662631259}
   m_Layer: 0
   m_Name: scp_rb_road_part_01_04
   m_TagString: Untagged
@@ -86,57 +82,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5214651904203213561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7185773288822657798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2600423c9994ff44d94e5ff25196f2ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &522427944139885977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7185773288822657798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61540d5c202b61543ae8e0129abb0e67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8622631773343447770, guid: d3c86e28b236e5d40aba1f9f5f8b49e2, type: 3}
---- !u!65 &3193683567133920633
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7185773288822657798}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.000006, y: 27.999973, z: 0.2295481}
-  m_Center: {x: -0.0000011920929, y: 0.0000023841858, z: 0.02295399}
---- !u!54 &2998050219662631259
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7185773288822657798}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 1
-  m_Constraints: 118
-  m_CollisionDetection: 0

@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-    public GameObject enemyPrefab;
-    
-    public void SpawnEnemyAt(GameObject houseLocation)
+    public void SpawnEnemyAt(GameObject gameObject)
     {
-        if (enemyPrefab != null)
-        {
-            Instantiate(enemyPrefab, houseLocation.transform.position + new Vector3(0, 0, 20), transform.rotation * Quaternion.Euler(0f, 180f, 0f));
-        }
+        System.Random random = new System.Random();
+        GameObject enemySpawnLocation = gameObject.transform.Find("Lane_Location" + random.Next(1, 4)).gameObject;
+        Instantiate(Resources.Load("Cars/Car_" + random.Next(1, 4)) as GameObject, enemySpawnLocation.transform.position, transform.rotation * Quaternion.Euler(0f, 180f, 0f));
     }
 }
