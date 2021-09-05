@@ -81,7 +81,7 @@ public class RoadGenerator : MonoBehaviour
 
         if (houseSpace == 0) houseSpawner.BuildHouses(tempFrontRoadPiece);
         if (enemySpace == 0) enemySpawner.SpawnEnemyAt(tempFrontRoadPiece);
-        else if (rand.Next(1, 11) < 3) coinSpawner.BuildCoins(tempFrontRoadPiece);
+        else if (RandomNumGen.instance.GetRandomNumber(1, 11) < 3) coinSpawner.BuildCoins(tempFrontRoadPiece);
 
         if (houseSpace < maxHouseSpace) houseSpace++; else houseSpace = 0;
         if (enemySpace < maxEnemySpace) enemySpace++; else enemySpace = 0;
