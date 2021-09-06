@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(collision.collider.gameObject);
             Destroy(gameObject);
-            ScoreCounter.instance.AddPoint();
+            PlayerStateController.instance.AddScorePoint();
         }
     }
 }

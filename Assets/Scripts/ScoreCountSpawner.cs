@@ -10,14 +10,14 @@ public class ScoreCountSpawner : MonoBehaviour
 
     void Start()
     {
-        score = ScoreCounter.instance.score;
+        score = PlayerStateController.instance.score;
         number = Instantiate(Resources.Load("Numbers/0") as GameObject, transform.position, transform.rotation);
         number.transform.localScale += new Vector3(-0.7f, -0.7f, -0.7f);
     }
 
     private void FixedUpdate()
     {
-        var currentScore = ScoreCounter.instance.score;
+        var currentScore = PlayerStateController.instance.score;
         if (score != currentScore)
         {
             Destroy(number);

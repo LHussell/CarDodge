@@ -84,7 +84,7 @@
   "action_sets": [
     {
       "name": "/actions/VRIF",
-      "usage": "leftright"
+      "usage": "single"
     }
   ],
   "default_bindings": [

@@ -1,11 +1,12 @@
 using UnityEngine;
 
-public class ScoreCounter : MonoBehaviour
+public class PlayerStateController : MonoBehaviour
 {
 
-    public static ScoreCounter instance = null;
+    public static PlayerStateController instance = null;
 
     public int score = 0;
+    public int coins = 0;
 
     private void Awake()
     {
@@ -15,8 +16,13 @@ public class ScoreCounter : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public void AddPoint()
+    public void AddScorePoint()
     {
         score++;
+    }
+
+    public void AddCoin()
+    {
+        coins++;
     }
 }
