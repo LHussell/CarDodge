@@ -401,7 +401,7 @@ MonoBehaviour:
   bendRotationAxisType: 0
   bendRotationCenter2: {fileID: 0}
   bendRotationCenter2Position: {x: 0, y: 0, z: 0}
-  bendVerticalSize: -1
+  bendVerticalSize: -0.55
   bendVerticalOffset: 24
   bendHorizontalSize: 0
   bendHorizontalOffset: 0
