@@ -7381,7 +7381,6 @@ GameObject:
   - component: {fileID: 821879052739697691}
   - component: {fileID: 821879052739697690}
   - component: {fileID: 821879052739697693}
-  - component: {fileID: 821879052739697692}
   - component: {fileID: 821879052739697695}
   m_Layer: 0
   m_Name: CenterEyeAnchor
@@ -7506,18 +7505,6 @@ MonoBehaviour:
   FadeInSpeed: 6
   FadeOutSpeed: 6
   SceneFadeInDelay: 1
---- !u!114 &821879052739697692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821879052739697761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24e17e99340454947b0f3ccf2ea00b04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &821879052739697695
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8a9dd7d65456d2143bb45b92da8d67b6, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.08596048, g: 0.13642637, b: 0.32298777, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -269,6 +269,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb2c01024a76107459d3a0a4a2c612c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &698091469
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 160244, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_Name
+      value: low_poly_clouds_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454804, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: width
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: height
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: density
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: quality
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: show_gui
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: rot_RND.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: rot_RND.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: clouds_size
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: clouds_scale
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: density_limit
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11499968, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: speed_k_value
+      value: 0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 19865482, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 05d9ebacb3ef5f7429ede69f903ddc52, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,8 +506,8 @@ MonoBehaviour:
   bendRotationAxisType: 0
   bendRotationCenter2: {fileID: 0}
   bendRotationCenter2Position: {x: 0, y: 0, z: 0}
-  bendVerticalSize: -0.55
-  bendVerticalOffset: 24
+  bendVerticalSize: -0.5
+  bendVerticalOffset: 35
   bendHorizontalSize: 0
   bendHorizontalOffset: 0
   bendCurvatureSize: 0
@@ -705,6 +810,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 821879052739697688, guid: 676e1e7cc80ea54438caa2069001f834,
+        type: 3}
+      propertyPath: m_ClearFlags
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 821879052739697688, guid: 676e1e7cc80ea54438caa2069001f834,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 821879052739697688, guid: 676e1e7cc80ea54438caa2069001f834,
+        type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.36687624
+      objectReference: {fileID: 0}
+    - target: {fileID: 821879052739697688, guid: 676e1e7cc80ea54438caa2069001f834,
+        type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 821879052749245803, guid: 676e1e7cc80ea54438caa2069001f834,
         type: 3}
