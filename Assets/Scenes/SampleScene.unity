@@ -241,7 +241,9 @@ MonoBehaviour:
   roadPiece: {fileID: 9033060178964960889, guid: 073697bc4f5518d41b94eb148cf134c8,
     type: 3}
   maxEnemySpace: 10
-  maxHouseSpace: 3
+  maxHouseSpace: 5
+  maxHydrantSpace: 25
+  maxLamppostSpace: 8
   numOfRoadPieces: 30
 --- !u!114 &464673450
 MonoBehaviour:

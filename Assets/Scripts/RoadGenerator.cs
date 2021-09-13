@@ -18,21 +18,23 @@ public class RoadGenerator : MonoBehaviour
 
     public int maxEnemySpace;
     public int maxHouseSpace;
-
+    public int maxHydrantSpace;
+    public int maxLamppostSpace;
 
     int enemySpace = 0;
     int houseSpace = 0;
-
+    int hydrantSpace = 0;
+    int lamppostSpace = 0;
+    bool isLamppostLeftSide = true;
 
 
     public int numOfRoadPieces;
 
     Vector3 movementStep;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        // Initialise and build all roadpieces to move at set speed.
         movementStep = new Vector3(0, 0, -1) * roadSpeed;
         lastRoadPiece = numOfRoadPieces - 1;
         generatedRoadPieces = new GameObject[numOfRoadPieces];
@@ -42,10 +44,8 @@ public class RoadGenerator : MonoBehaviour
         buildRoads(numOfRoadPieces);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        
         if (generatedRoadPieces[frontRoadPiece].transform.position.z <= -40)
         {
             recycleRoads();
@@ -53,6 +53,7 @@ public class RoadGenerator : MonoBehaviour
         moveRoads();
     }
 
+    // Builds all the roads in the initialisation. numOfRoads defines how long the road should be in front of the player. 
     void buildRoads(int numOfRoads)
     {
         float newZCenter = roadBoxCollider.center.z + zFullExtent;
@@ -64,28 +65,39 @@ public class RoadGenerator : MonoBehaviour
     }
 
 
-
+    // Recycle roads and instantiate objects on them according spacing between objects defined. 
     void recycleRoads()
     {
+        // Find new position of where to change the position of roadpiece and find roadpiece to move and move them.
         var endPosition = new Vector3(0, 0, generatedRoadPieces[lastRoadPiece].transform.position.z + zFullExtent);
         var tempFrontRoadPiece = generatedRoadPieces[frontRoadPiece];
         Rigidbody frontRoadRigidBody = tempFrontRoadPiece.GetComponent<Rigidbody>();
-        HouseSpawner houseSpawner = tempFrontRoadPiece.GetComponent<HouseSpawner>();
-        EnemySpawner enemySpawner = tempFrontRoadPiece.GetComponent<EnemySpawner>();
-        CoinSpawner coinSpawner = tempFrontRoadPiece.GetComponent<CoinSpawner>();
-
         frontRoadRigidBody.transform.position = endPosition;
         frontRoadRigidBody.transform.position += movementStep * Time.deltaTime;
 
-        System.Random rand = new System.Random();
+        // Clear previous items from roadpiece
+        var sideWalkSpawner = tempFrontRoadPiece.GetComponent<SidewalkItemSpawner>();
+        sideWalkSpawner.ClearItems();
 
-        if (houseSpace == 0) houseSpawner.BuildHouses(tempFrontRoadPiece);
-        if (enemySpace == 0) enemySpawner.SpawnEnemyAt(tempFrontRoadPiece);
-        else if (RandomNumGen.instance.GetRandomNumber(1, 11) < 3) coinSpawner.BuildCoins(tempFrontRoadPiece);
+        // Instantiate gameobjects when conditions are met.
+        if (enemySpace == 0) tempFrontRoadPiece.GetComponent<EnemySpawner>().SpawnEnemyAt(tempFrontRoadPiece);
+        else if (RandomNumGen.instance.GetRandomNumber(1, 11) < 3) tempFrontRoadPiece.GetComponent<CoinSpawner>().BuildCoins(tempFrontRoadPiece);
+        if (houseSpace == 0) sideWalkSpawner.BuildHouses(tempFrontRoadPiece);
+        if (hydrantSpace == 0) sideWalkSpawner.SpawnHydrant(tempFrontRoadPiece);
+        if (lamppostSpace == 0)
+        {
+            sideWalkSpawner.SpawnLamppost(tempFrontRoadPiece, isLamppostLeftSide);
+            isLamppostLeftSide = !isLamppostLeftSide;
+        }
 
+        // Increment item spaces.
         if (houseSpace < maxHouseSpace) houseSpace++; else houseSpace = 0;
         if (enemySpace < maxEnemySpace) enemySpace++; else enemySpace = 0;
+        if (hydrantSpace < maxHydrantSpace) hydrantSpace++; else hydrantSpace = 0;
+        if (lamppostSpace < maxLamppostSpace) lamppostSpace++; else lamppostSpace = 0;
+        
 
+        // Update frontRoadPiece in array.
         if (frontRoadPiece == numOfRoadPieces - 1)
         {
             lastRoadPiece = numOfRoadPieces - 1;
@@ -98,6 +110,7 @@ public class RoadGenerator : MonoBehaviour
         }
     }
 
+    // Method for moving the transform position of the roadpieces.
     void moveRoads()
     {
         foreach (GameObject roadPiece in generatedRoadPieces)
