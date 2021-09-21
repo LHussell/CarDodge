@@ -46,11 +46,14 @@ public class RoadGenerator : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (generatedRoadPieces[frontRoadPiece].transform.position.z <= -40)
+        if (StartMenu.instance.gameRunning)
         {
-            recycleRoads();
+            if (generatedRoadPieces[frontRoadPiece].transform.position.z <= -40)
+            {
+                recycleRoads();
+            }
+            moveRoads();
         }
-        moveRoads();
     }
 
     // Builds all the roads in the initialisation. numOfRoads defines how long the road should be in front of the player. 

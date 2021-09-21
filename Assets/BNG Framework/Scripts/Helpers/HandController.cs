@@ -201,7 +201,6 @@ namespace BNG {
         /// Update GripAmount, PointAmount, and ThumbAmount based raw input from InputBridge
         /// </summary>
         public virtual void UpdateFromInputs() {
-
             // Grabber may have been deactivated
             if (grabber == null || !grabber.isActiveAndEnabled) {
                 grabber = GetComponentInChildren<Grabber>();

@@ -45,7 +45,6 @@ namespace BNG {
         /// Calls Events
         /// </summary>
         VRUISystem uiSystem;
-        PointerEvents selectedPointerEvents;
         PointerEventData data;
 
         [Tooltip("LineRenderer to use when showing a valid UI Canvas. Leave null to attempt a GetComponent<> on this object.")]
@@ -82,35 +81,24 @@ namespace BNG {
         public void Update() {
             data = uiSystem.EventData;
 
-            // Can bail early if not looking at anything
-            if (data == null || data.pointerCurrentRaycast.gameObject == null) {
-                
+            //Can bail early if not looking at anything
+            if (data == null || data.pointerCurrentRaycast.gameObject == null)
+            {
+
                 HidePointer();
-                                                
+
                 return;
+            }
+
+            Vector3 fwd = transform.TransformDirection(Vector3.forward);
+
+            if (Physics.Raycast(transform.position, fwd, 50))
+            {
+                print("Raycasthit");
             }
 
             // Set position of the cursor
             if (_cursor != null ) {
-
-                bool lookingAtUI = data.pointerCurrentRaycast.module.GetType() == typeof(GraphicRaycaster);
-                selectedPointerEvents = data.pointerCurrentRaycast.gameObject.GetComponent<PointerEvents>();
-                bool lookingAtPhysicalObject = selectedPointerEvents != null;
-
-                // Are we too far away from the Physics object now?
-                if(lookingAtPhysicalObject) {
-                    if (data.pointerCurrentRaycast.distance > selectedPointerEvents.MaxDistance) {
-                        HidePointer();
-                        return;
-                    }
-                }
-                
-                // Can bail immediately if not looking at a UI object or an Object with PointerEvents on it
-                if(!lookingAtUI && !lookingAtPhysicalObject) {
-                    HidePointer();
-                    return;
-                }
-
                 // Set as local position
                 float distance = Vector3.Distance(transform.position, data.pointerCurrentRaycast.worldPosition);
                 _cursor.transform.localPosition = new Vector3(0, 0, distance - 0.0001f);                
