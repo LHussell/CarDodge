@@ -12,6 +12,10 @@ public class StartMenu : MonoBehaviour
     GameObject settingsCar;
     GameObject exitCar;
 
+    Rigidbody startCarTextRigidBody;
+    Rigidbody settingsCarTextRigidBody;
+    Rigidbody exitCarTextRigidBody;
+
     Light startCarLeftHeadlight;
     Light startCarRightHeadlight;
     Light settingsCarLeftHeadlight;
@@ -27,6 +31,9 @@ public class StartMenu : MonoBehaviour
     VolumetricLightBeam exitCarRightLightBeam;
 
     public bool gameRunning = false;
+    public bool gameOver = false;
+    public bool menuItemSelected = false;
+
     CarType lastCarHighlighted = CarType.START;
 
     private void Awake()
@@ -41,22 +48,45 @@ public class StartMenu : MonoBehaviour
         settingsCar = gameObject.transform.Find("CarMenuSettings").gameObject;
         exitCar = gameObject.transform.Find("CarMenuExit").gameObject;
 
+
         startCarLeftHeadlight = startCar.transform.Find("LeftHeadlight").gameObject.GetComponent<Light>();
         startCarRightHeadlight = startCar.transform.Find("RightHeadlight").gameObject.GetComponent<Light>();
         startCarLeftLightBeam = startCar.transform.Find("LeftHeadlight").gameObject.GetComponent<VolumetricLightBeam>();
         startCarRightLightBeam = startCar.transform.Find("RightHeadlight").gameObject.GetComponent<VolumetricLightBeam>();
+        startCarTextRigidBody = startCar.transform.Find("StartText").gameObject.GetComponent<Rigidbody>();
 
         settingsCarLeftHeadlight = settingsCar.transform.Find("LeftHeadlight").gameObject.GetComponent<Light>();
         settingsCarRightHeadlight = settingsCar.transform.Find("RightHeadlight").gameObject.GetComponent<Light>();
         settingsCarLeftLightBeam = settingsCar.transform.Find("LeftHeadlight").gameObject.GetComponent<VolumetricLightBeam>();
         settingsCarRightLightBeam = settingsCar.transform.Find("RightHeadlight").gameObject.GetComponent<VolumetricLightBeam>();
+        settingsCarTextRigidBody = settingsCar.transform.Find("SettingsText").gameObject.GetComponent<Rigidbody>();
 
         exitCarLeftHeadlight = exitCar.transform.Find("LeftHeadlight").gameObject.GetComponent<Light>();
         exitCarRightHeadlight = exitCar.transform.Find("RightHeadlight").gameObject.GetComponent<Light>();
         exitCarLeftLightBeam = exitCar.transform.Find("LeftHeadlight").gameObject.GetComponent<VolumetricLightBeam>();
         exitCarRightLightBeam = exitCar.transform.Find("RightHeadlight").gameObject.GetComponent<VolumetricLightBeam>();
+        exitCarTextRigidBody = exitCar.transform.Find("ExitText").gameObject.GetComponent<Rigidbody>();
 
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (menuItemSelected)
+        {
+            switch (lastCarHighlighted)
+            {
+                case CarType.START:
+                    WiggleText(startCarTextRigidBody);
+                    break;
+                case CarType.SETTINGS:
+                    WiggleText(settingsCarTextRigidBody);
+                    break;
+                case CarType.EXIT:
+                    WiggleText(exitCarTextRigidBody);
+                    break;
+            }
+        }
     }
 
     internal void TriggerMenuInstruction(string name)
@@ -66,6 +96,9 @@ public class StartMenu : MonoBehaviour
             case "CarMenuStart":
                 gameRunning = true;
                 gameObject.SetActive(false);
+                break;
+            case "CarMenuExit":
+                Application.Quit();
                 break;
         }
     }
@@ -96,31 +129,30 @@ public class StartMenu : MonoBehaviour
                 lastCarHighlighted = CarType.EXIT;
                 break;
         }
+        menuItemSelected = true;
     }
 
     internal void ClearHighlight()
     {
-        switch (lastCarHighlighted)
-        {
-            case CarType.START:
-                startCarLeftHeadlight.enabled = false;
-                startCarLeftLightBeam.enabled = false;
-                startCarRightHeadlight.enabled = false;
-                startCarRightLightBeam.enabled = false;
-                break;
-            case CarType.SETTINGS:
-                settingsCarLeftHeadlight.enabled = false;
-                settingsCarRightHeadlight.enabled = false;
-                settingsCarLeftLightBeam.enabled = false;
-                settingsCarRightLightBeam.enabled = false;
-                break;
-            case CarType.EXIT:
-                exitCarLeftHeadlight.enabled = false;
-                exitCarRightHeadlight.enabled = false;
-                exitCarLeftLightBeam.enabled = false;
-                exitCarRightLightBeam.enabled = false;
-                break;
-        }
+        startCarLeftHeadlight.enabled = false;
+        startCarLeftLightBeam.enabled = false;
+        startCarRightHeadlight.enabled = false;
+        startCarRightLightBeam.enabled = false;
+        startCarTextRigidBody.rotation = Quaternion.identity;
+
+        settingsCarLeftHeadlight.enabled = false;
+        settingsCarRightHeadlight.enabled = false;
+        settingsCarLeftLightBeam.enabled = false;
+        settingsCarRightLightBeam.enabled = false;
+        settingsCarTextRigidBody.rotation = Quaternion.identity;
+
+        exitCarLeftHeadlight.enabled = false;
+        exitCarRightHeadlight.enabled = false;
+        exitCarLeftLightBeam.enabled = false;
+        exitCarRightLightBeam.enabled = false;
+        exitCarTextRigidBody.rotation = Quaternion.identity;
+
+        menuItemSelected = false;
     }
 
     private enum CarType
@@ -128,5 +160,26 @@ public class StartMenu : MonoBehaviour
         START,
         SETTINGS,
         EXIT
+    }
+
+    bool rotateRight = true;
+    private void WiggleText(Rigidbody textRigidBody)
+    {
+        Quaternion deltaRotation;
+
+        if (rotateRight)
+        {
+            deltaRotation = Quaternion.Euler(new Vector3(0, 0, 70) * Time.fixedDeltaTime);
+        } 
+        else
+        {
+            deltaRotation = Quaternion.Euler(new Vector3(0, 0, -70) * Time.fixedDeltaTime);
+        }
+        textRigidBody.MoveRotation(textRigidBody.rotation * deltaRotation);
+
+        Debug.Log(textRigidBody.transform.eulerAngles.z);
+
+        if (textRigidBody.transform.eulerAngles.z < 350 && textRigidBody.transform.eulerAngles.z > 340) rotateRight = true;
+        if (textRigidBody.transform.eulerAngles.z > 10 && textRigidBody.transform.eulerAngles.z < 20) rotateRight = false;
     }
 }

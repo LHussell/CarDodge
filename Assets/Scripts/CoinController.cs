@@ -19,7 +19,7 @@ public class CoinController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isMoving)
+        if (isMoving && StartMenu.instance.gameRunning)
         {
             coinRigidBody.MovePosition(transform.position + new Vector3(0, 0, -25) * Time.deltaTime);
             Quaternion deltaRotation = Quaternion.Euler(new Vector3(0, 100, 0) * Time.fixedDeltaTime);
@@ -31,10 +31,7 @@ public class CoinController : MonoBehaviour
             coinRigidBody.MoveRotation(coinRigidBody.rotation * deltaRotation);
             transform.localScale -= new Vector3(2, 2, 2) * Time.deltaTime;
         } 
-        else
-        {
-            Destroy(gameObject);
-        }
+        else Destroy(gameObject);
 
         if (triggerJump)
         {
@@ -43,13 +40,8 @@ public class CoinController : MonoBehaviour
             triggerJump = false;
         }
 
-
-
-
         if (transform.position.z < -10)
-        {
             Destroy(gameObject);
-        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -7,6 +7,7 @@ TagManager:
   - RoadPiece
   - Projectile
   - MenuItem
+  - EnemyCar
   layers:
   - Default
   - TransparentFX
