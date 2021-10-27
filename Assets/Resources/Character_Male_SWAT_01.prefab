@@ -3341,9 +3341,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8590062738454127037}
   - component: {fileID: 8535375636696138831}
+  - component: {fileID: -1414264128990953881}
   m_Layer: 0
   m_Name: Character_Male_SWAT_01
-  m_TagString: Untagged
+  m_TagString: EnemyCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3392,6 +3393,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-1414264128990953881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8585169475710685275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee18529e970a5a4aa8994b2b5adb42b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 8586432672637808335}
+  speed: 10
+  objectToThrow: {fileID: 1554821565107674, guid: a858de53d265a46cd8446dc0a3f198e2,
+    type: 3}
 --- !u!1 &8585188490486122657
 GameObject:
   m_ObjectHideFlags: 0

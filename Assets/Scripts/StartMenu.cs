@@ -177,8 +177,6 @@ public class StartMenu : MonoBehaviour
         }
         textRigidBody.MoveRotation(textRigidBody.rotation * deltaRotation);
 
-        Debug.Log(textRigidBody.transform.eulerAngles.z);
-
         if (textRigidBody.transform.eulerAngles.z < 350 && textRigidBody.transform.eulerAngles.z > 340) rotateRight = true;
         if (textRigidBody.transform.eulerAngles.z > 10 && textRigidBody.transform.eulerAngles.z < 20) rotateRight = false;
     }

@@ -30,11 +30,11 @@ namespace BNG
                     var xPos = transform.position.x;
                     if (xPos < 6.6 && axisVal.x > 0)
                     {
-                        vehicleRigidBody.MovePosition(transform.position + new Vector3(axisVal.x * 3, 0, 0) * Time.deltaTime);
+                        vehicleRigidBody.MovePosition(transform.position + new Vector3(axisVal.x * 5, 0, 0) * Time.deltaTime);
                     }
                     if (xPos > -6.6 && axisVal.x < 0)
                     {
-                        vehicleRigidBody.MovePosition(transform.position + new Vector3(axisVal.x * 3, 0, 0) * Time.deltaTime);
+                        vehicleRigidBody.MovePosition(transform.position + new Vector3(axisVal.x * 5, 0, 0) * Time.deltaTime);
                     }
                 }
             }
