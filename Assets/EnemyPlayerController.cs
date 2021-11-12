@@ -36,7 +36,6 @@ public class EnemyPlayerController : MonoBehaviour
         if (transform.position.z < 100)
         {
             animator.SetTrigger("Throw");
-            Debug.Log("Throw triggered");
         }
     }
 
@@ -56,7 +55,7 @@ public class EnemyPlayerController : MonoBehaviour
 
     protected void LookAtAngle(float _angle, Vector3 mainPlayerPosition)
     {
-        Vector3 axis = mainPlayerPosition - objectToThrowRigidBody.transform.position;
+        Vector3 axis = mainPlayerPosition + new Vector3(0,0,10) - objectToThrowRigidBody.transform.position;
         axis.y = 0;
         axis.Normalize();
         axis = Quaternion.AngleAxis(_angle, Vector3.Cross(axis, Vector3.up)) * axis;

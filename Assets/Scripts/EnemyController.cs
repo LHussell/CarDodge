@@ -27,10 +27,5 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
             PlayerStateController.instance.AddScorePoint();
         }
-        if (collision.tag.Equals("Player"))
-        {
-            StartMenu.instance.gameRunning = false;
-            StartMenu.instance.gameOver = true;
-        }
     }
 }

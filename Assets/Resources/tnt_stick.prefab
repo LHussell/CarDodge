@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2952955883472480037}
   m_Layer: 12
   m_Name: tnt_stick
-  m_TagString: Untagged
+  m_TagString: TNT
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

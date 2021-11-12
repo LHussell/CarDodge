@@ -19,4 +19,14 @@ public class MainPlayerController : MonoBehaviour
     {
         
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("TNT"))
+        {
+            StartMenu.instance.gameRunning = false;
+            StartMenu.instance.gameOver = true;
+        }
+    }
 }

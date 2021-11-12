@@ -25,9 +25,17 @@ public class TntController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.transform.tag.Equals("EnemyCar"))
+
+        if (!collision.transform.tag.Equals("EnemyCar") || !collision.transform.tag.Equals("Coin"))
         {
+            Instantiate(Resources.Load("FX_AerialExplosion_AC") as GameObject, gameObject.transform.position, transform.rotation);
             Destroy(gameObject);
+            if (collision.transform.tag.Equals("Player"))
+            {
+                StartMenu.instance.gameRunning = false;
+                StartMenu.instance.gameOver = true;
+            }
         }
+
     }
 }

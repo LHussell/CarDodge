@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - MenuItem
   - EnemyCar
+  - Coin
+  - TNT
   layers:
   - Default
   - TransparentFX
